@@ -4,10 +4,12 @@ import sagas from './ducks/rootSaga';
 import createSagaMiddleware from 'redux-saga';
 import { logger } from 'redux-logger';
 import { PlayersState } from './ducks/players/types';
+import { LeagueState } from './ducks/league/types';
 
 
 export interface ApplicationState {
-    players: PlayersState
+    league: LeagueState,
+    players: PlayersState,
 }
 
 const sagaMiddleware = createSagaMiddleware();

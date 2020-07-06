@@ -44,7 +44,7 @@ export interface PlayerStats {
 }
 
 export interface LeagueState {
-    readonly league: League;
+    readonly league?: League;
     readonly loading: boolean;
     readonly error: boolean;
  }

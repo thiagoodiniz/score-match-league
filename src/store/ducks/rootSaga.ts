@@ -1,9 +1,12 @@
 import { all, takeLatest } from 'redux-saga/effects';
-import { Types } from './players/types';
+import { Types as PlayerTypes } from './players/types';
+import { Types as LeagueTypes } from './league/types';
 import { loadPlayers } from './players/sagas';
+import { loadLeague } from './league/sagas';
 
 export default function* rootSaga(){
     return yield all([
-        takeLatest(Types.LOAD_PLAYERS, loadPlayers )
+        takeLatest( PlayerTypes.LOAD_PLAYERS, loadPlayers ),
+        takeLatest( LeagueTypes.LOAD_LEAGUE, loadLeague ),
     ]);
 } 
