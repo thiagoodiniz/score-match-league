@@ -5,9 +5,9 @@ import { leagueService } from '../../../services/league.service';
 export function* loadLeague() {
     try {
         const players = yield call( leagueService.loadLeague );
-        yield put(loadLeagueSuccess(players))
+        yield put(loadLeagueSuccess(players));
     } catch(err) {
-        console.log('loadPlayers', err);
+        console.log('loadLeague', err);
         yield put(loadLeagueFailure());
     }
 }
