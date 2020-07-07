@@ -1,15 +1,23 @@
-import React from 'react';
-import PlayerList from './components/PlayerList/PlayerList';
+import React, { useState } from 'react';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
+import Theme from './styles/theme';
+import GlobalStyle from './styles/globalStyle';
 import { Provider } from 'react-redux';
 import store from './store';
+import Home from './components/Home';
 
-function App() {
+const App = () => {
+  const [theme] = useState<DefaultTheme>(Theme);
+
   return (
-    <Provider store={ store }>
-      <div className="App">
-        <PlayerList />
-      </div>
-    </Provider>
+    <ThemeProvider theme={ theme }>
+      <Provider store={ store }>
+        <GlobalStyle />
+         
+          <Home />
+
+      </Provider>
+    </ThemeProvider>
   );
 }
 
