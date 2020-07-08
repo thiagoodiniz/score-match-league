@@ -1,17 +1,21 @@
 import React from 'react';
 import DivisionTable from './DivisionTable';
 import DivisionMatches from './DivisionMatches';
+import { Division } from '../../../store/ducks/league/types';
 
-const Division = () => {
+interface Props {
+    division: Division
+}
 
+const LeagueDivision: React.FC<Props> = ({ division }) => {
     return(
-        <>
-            Division
+        <div>
+            <h2>Divisão: { division.division }</h2>
 
-            <DivisionTable />
+            <DivisionTable divisionPlayers={ division.players } />
             <DivisionMatches />
-        </>
+        </div>
     );
 }
 
-export default Division;
+export default LeagueDivision;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Division from './Division';
+import LeagueDivision from './Division';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { Dispatch, bindActionCreators } from 'redux';
@@ -18,10 +18,14 @@ class League extends Component<Props> {
     }
 
     render(){
+        const { league } = this.props.league;
         return(
-            <>
-                <Division />
-            </>
+            <div>
+                <h1>{ league?.name }</h1>
+                { league?.divisions.map((division, idx) => 
+                    <LeagueDivision key={idx} division={ division } />
+                ) }
+            </div>
         );
     }
 }
