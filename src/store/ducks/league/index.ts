@@ -14,7 +14,7 @@ const reducer: Reducer<LeagueState> = (state=INITIAL_STATE, action) => {
             return { ...state, loading: true, error: false};
         
         case Types.LOAD_LEAGUE_SUCCESS:
-            return { ...state, loading: false, error: false, league: action.league };
+            return { ...state, loading: false, error: false, league: action.payload.league };
 
         case Types.LOAD_LEAGUE_FAILURE:
             return { ...state, loading: false, error: true, league: undefined };
