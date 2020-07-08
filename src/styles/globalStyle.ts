@@ -13,4 +13,10 @@ export default createGlobalStyle`
     font-family: sans-serif;
     padding: 30px;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; 
+  }
 `;

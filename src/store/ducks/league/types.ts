@@ -25,11 +25,24 @@ export interface Division {
     idLeagueDivision: number;
     division: string;
     players: DivisionPlayer[];
+    divisionMatches: DivisionMatch[];
+}
+
+export interface DivisionMatch {
+    id: number;
+    idLeagueDivision: number;
+    round: number;
+    idPlayer1: number,
+    idPlayer2: number,
+    last_update_date: Date,
+    scored_goals_player1?: any,
+    scored_goals_player2?: any,
+    status: number
 }
 
 export interface DivisionPlayer extends Player {
     idLeagueDivisionPlayer: number;
-    stats: PlayerStats;
+    stats?: PlayerStats;
 }
 
 export interface PlayerStats {

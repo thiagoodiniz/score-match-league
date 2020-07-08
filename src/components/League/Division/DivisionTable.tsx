@@ -36,14 +36,14 @@ const DivisionTable: React.FC<Props> = ({divisionPlayers}) => {
                         <TableCell align="left" component="th" scope="row">
                             { player.name }
                         </TableCell>
-                        <TableCell align="right">{player.stats.points}</TableCell>
-                        <TableCell align="right">{player.stats.completedMatches}</TableCell>
-                        <TableCell align="right">{player.stats.wins}</TableCell>
-                        <TableCell align="right">{player.stats.draws}</TableCell>
-                        <TableCell align="right">{player.stats.loses}</TableCell>
-                        <TableCell align="center">{player.stats.scoredGoals}</TableCell>
-                        <TableCell align="center">{player.stats.concededGoals}</TableCell>
-                        <TableCell align="center">{player.stats.goalDifference}</TableCell>
+                        <TableCell align="right">{player.stats?.points}</TableCell>
+                        <TableCell align="right">{player.stats?.completedMatches}</TableCell>
+                        <TableCell align="right">{player.stats?.wins}</TableCell>
+                        <TableCell align="right">{player.stats?.draws}</TableCell>
+                        <TableCell align="right">{player.stats?.loses}</TableCell>
+                        <TableCell align="center">{player.stats?.scoredGoals}</TableCell>
+                        <TableCell align="center">{player.stats?.concededGoals}</TableCell>
+                        <TableCell align="center">{player.stats?.goalDifference}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
