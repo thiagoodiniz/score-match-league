@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '@material-ui/core';
 
 export const LeagueDivisionCard = styled.div`
     && {
@@ -35,7 +36,8 @@ export const MatchPlayer2 = styled.div`
 
 export const MatchScoreboard = styled.div`
     width: 20%;
-    padding-top: 10px;
+    padding: 18px 0;
+    position: relative;
     display: flex;
     justify-content: space-evenly;
 `;
@@ -51,4 +53,18 @@ export const MatchInputGoals = styled.input`
     font-size: 12pt;
     width: 32px;
     margin-bottom: 10px;
+`;
+
+export const SaveMatchBtn = styled(Button)`
+    && {
+        position: absolute;
+        bottom: 3px;
+        height: 22px;
+        background-color: ${ props => props.theme.colors.primary};
+        text-transform: none;
+        color: #FFF;
+        &:hover {
+            background-color: ${ props => props.theme.colors.primary};
+        }
+    }
 `;

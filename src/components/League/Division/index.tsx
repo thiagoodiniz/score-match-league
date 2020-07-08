@@ -19,10 +19,13 @@ const LeagueDivision: React.FC<Props> = ({ division }) => {
         <div>
             <h2>Divisão: { division.division }</h2>
             <LeagueDivisionCard>
+
                 <DivisionTable divisionPlayers={ division.players } />
+
                 { division.divisionMatches.length > 0 &&
                     <DivisionMatches divisionMatches={ division.divisionMatches } getPlayer={ getPlayer } />
                 }
+                
             </LeagueDivisionCard>
         </div>
     );
