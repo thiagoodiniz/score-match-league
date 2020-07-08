@@ -3,6 +3,7 @@ import axios from 'axios';
 export enum Endpoints {
     player = '/player',
     league = '/league',
+    divisionMatches = '/league/divisionMatches',
 }
 
 const api = axios.create({

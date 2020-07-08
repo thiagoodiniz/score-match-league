@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
 import { DivisionPlayer, DivisionMatch } from '../../../../store/ducks/league/types';
 import { MatchInputGoals, MatchContainer, MatchPlayer1, MatchPlayer2, MatchScoreboard, SaveMatchBtn } from '../styles';
+import { saveMatch } from '../../../../store/ducks/league/actions';
 
 interface Props {
     player1: DivisionPlayer;
@@ -9,6 +11,7 @@ interface Props {
 }
 
 const Match: React.FC<Props> = ({ player1, player2, match }) => {
+    const dispatch = useDispatch();
     const [scoredGoalsPlayer1, setScoredGoalsPlayer1] = useState(match.scored_goals_player1 || '');
     const [scoredGoalsPlayer2, setScoredGoalsPlayer2] = useState(match.scored_goals_player2 || '');
 
@@ -18,6 +21,13 @@ const Match: React.FC<Props> = ({ player1, player2, match }) => {
 
         return p1Goals !== match.scored_goals_player1
             || p2Goals !== match.scored_goals_player2
+    }
+
+    const onClickSaveMatch = () => {
+        match.scored_goals_player1 = scoredGoalsPlayer1 === '' ? null : Number(scoredGoalsPlayer1);
+        match.scored_goals_player2 = scoredGoalsPlayer2 === '' ? null : Number(scoredGoalsPlayer2);
+        
+        dispatch(saveMatch(match));
     }
 
     return(
@@ -31,7 +41,7 @@ const Match: React.FC<Props> = ({ player1, player2, match }) => {
                 <MatchInputGoals value={ scoredGoalsPlayer1 } type="number" onChange={ (e) => setScoredGoalsPlayer1(e.target.value) } />
                 <MatchInputGoals value={ scoredGoalsPlayer2 } type="number" onChange={ (e) => setScoredGoalsPlayer2(e.target.value) } />
                 { canShowUpdateBtn() && 
-                    <SaveMatchBtn >
+                    <SaveMatchBtn onClick={ onClickSaveMatch }>
                         Salvar
                     </SaveMatchBtn> }
             </MatchScoreboard>

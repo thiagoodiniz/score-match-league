@@ -7,6 +7,8 @@ export enum Types {
     LOAD_LEAGUE = 'league/LOAD_LEAGUE',
     LOAD_LEAGUE_SUCCESS = 'league/LOAD_LEAGUE_SUCCESS',
     LOAD_LEAGUE_FAILURE = 'league/LOAD_LEAGUE_FAILURE',
+
+    SAVE_MATCH = 'league/SAVE_MATCH',
 }
 
 
