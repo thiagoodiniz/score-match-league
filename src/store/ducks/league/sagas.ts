@@ -13,6 +13,17 @@ export function* loadLeague() {
     }
 }
 
+export function* addDivisionPlayers(params: any) { // @TODO- verificar essa tipagem
+    try {
+        const {leagueId, leagueDivisionId, playerIds} = params.payload;
+
+        yield call( leagueService.addDivisionPlayers, leagueId, leagueDivisionId, playerIds );
+        yield put(loadLeagueAction());
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 export function* saveMatch(params: any) { // @TODO- verificar essa tipagem
     try {
         yield call( leagueService.saveMatch, params.payload);

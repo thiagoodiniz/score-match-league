@@ -11,6 +11,7 @@ import { Player } from '../../../store/ducks/players/types';
 
 interface Props {
     players: Player[];
+    addDivisionPlayers(playerIds: number[]): void
 }
 
 interface State {
@@ -26,6 +27,11 @@ class AddDivisionPlayers extends Component<Props, State> {
     handleModal = () => {
         this.setState({ modalOpen: !this.state.modalOpen});
     };
+
+    onConfirm = () => {
+        this.props.addDivisionPlayers(this.props.players.map(pl => pl.id));
+        this.handleModal();
+    }
 
     render() {
         return(
@@ -60,10 +66,10 @@ class AddDivisionPlayers extends Component<Props, State> {
                     </DialogContent>
                     <DialogActions>
                         <Button autoFocus onClick={ () => this.handleModal() } color="primary">
-                        Cancelar
+                            Cancelar
                         </Button>
-                        <Button onClick={ () => this.handleModal() } color="primary">
-                        Confirmar
+                        <Button onClick={ () => this.onConfirm() } color="primary">
+                            Confirmar
                         </Button>
                     </DialogActions>
                 </Dialog>

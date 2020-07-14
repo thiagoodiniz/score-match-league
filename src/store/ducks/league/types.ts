@@ -8,9 +8,10 @@ export enum Types {
     LOAD_LEAGUE_SUCCESS = 'league/LOAD_LEAGUE_SUCCESS',
     LOAD_LEAGUE_FAILURE = 'league/LOAD_LEAGUE_FAILURE',
 
+    ADD_DIVISION_PLAYERS = 'league/ADD_DIVISION_PLAYERS',
+
     SAVE_MATCH = 'league/SAVE_MATCH',
 }
-
 
 /**
  * League
@@ -24,15 +25,15 @@ export interface League {
 }
 
 export interface Division {
-    idLeagueDivision: number;
-    division: string;
+    leagueDivisionId: number;
+    divisionDesc: string;
     players: DivisionPlayer[];
     divisionMatches: DivisionMatch[];
 }
 
 export interface DivisionMatch {
     id: number;
-    idLeagueDivision: number;
+    leagueDivisionId: number;
     round: number;
     idPlayer1: number,
     idPlayer2: number,
@@ -62,4 +63,4 @@ export interface LeagueState {
     readonly league?: League;
     readonly loading: boolean;
     readonly error: boolean;
- }
+}

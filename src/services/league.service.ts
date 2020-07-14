@@ -7,6 +7,17 @@ export const leagueService = {
             .then(res => res.data);
     },
 
+    addDivisionPlayers: (leagueId: number, leagueDivisionId: number, playerIds: number[]) => {
+        const divisionPlayersPayload = {
+            leagueId,
+            leagueDivisionId,
+            players: playerIds,
+        }
+
+        return api.post(Endpoints.divisionPlayers, divisionPlayersPayload)
+            .then(res => res.data)
+    },
+
     saveMatch: (match: DivisionMatch) => {
         const matchesPayload = {
             matches: [
@@ -22,7 +33,6 @@ export const leagueService = {
             ]
         }
 
-        
         return api.put(Endpoints.divisionMatches, matchesPayload)
             .then(res => res.data)
     }

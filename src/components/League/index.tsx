@@ -5,12 +5,13 @@ import { ApplicationState } from '../../store';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as LeagueActions from '../../store/ducks/league/actions';
 import * as PlayerActions from '../../store/ducks/players/actions';
-import { LeagueState } from '../../store/ducks/league/types';
+import { LeagueState, Division } from '../../store/ducks/league/types';
 import { Player } from '../../store/ducks/players/types';
 
 interface Props {
     loadLeague(): void;
     loadPlayers(): void;
+    addDivisionPlayers(leagueId: number, leagueDivisionId: number, playerIds: number[]): void;
     league: LeagueState;
     players: Player[];
 }
@@ -22,6 +23,10 @@ class League extends Component<Props> {
         this.props.loadPlayers();
     }
 
+    addDivisionPlayers = (leagueId: number, playerIds: number[], division: Division) => {
+        this.props.addDivisionPlayers(leagueId, division.leagueDivisionId, playerIds );
+    }
+
     render(){
         const { league } = this.props.league;
         const { players } = this.props;
@@ -29,7 +34,7 @@ class League extends Component<Props> {
             <div>
                 <h1>{ league?.name }</h1>
                 { league?.divisions.map((division, idx) => 
-                    <LeagueDivision key={idx} players={ players } division={ division } />
+                    <LeagueDivision key={idx} players={ players } division={ division } addDivisionPlayers={ (playerIds: number[]) => this.addDivisionPlayers(league.id, playerIds, division) } />
                 ) }
             </div>
         );
