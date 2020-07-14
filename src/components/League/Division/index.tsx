@@ -3,12 +3,16 @@ import DivisionTable from './DivisionTable';
 import DivisionMatches from './DivisionMatches/DivisionMatches';
 import { Division, DivisionPlayer } from '../../../store/ducks/league/types';
 import { LeagueDivisionCard } from './styles';
+import AddDivisionPlayers from './addPlayers';
+import { ApplicationState } from '../../../store';
+import { Player } from '../../../store/ducks/players/types';
 
 interface Props {
-    division: Division
+    division: Division;
+    players: Player[];
 }
 
-const LeagueDivision: React.FC<Props> = ({ division }) => {
+const LeagueDivision: React.FC<Props> = ({ division, players }) => {
 
     const getPlayer = (idPlayer: number): DivisionPlayer => {
         const idx = division.players.findIndex(player => player.id === idPlayer); 
@@ -20,10 +24,19 @@ const LeagueDivision: React.FC<Props> = ({ division }) => {
             <h2>Divisão: { division.division }</h2>
             <LeagueDivisionCard>
 
-                <DivisionTable divisionPlayers={ division.players } />
+                { division.players.length > 0 
+                    ?
+                        <>
+                            <DivisionTable divisionPlayers={ division.players } />
 
-                { division.divisionMatches.length > 0 &&
-                    <DivisionMatches divisionMatches={ division.divisionMatches } getPlayer={ getPlayer } />
+                            { division.divisionMatches.length > 0 &&
+                                <DivisionMatches divisionMatches={ division.divisionMatches } getPlayer={ getPlayer } />
+                            }
+                        </>
+                    : 
+                        <>
+                            <AddDivisionPlayers players={ players } />
+                        </>
                 }
                 
             </LeagueDivisionCard>
