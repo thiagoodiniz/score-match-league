@@ -38,8 +38,8 @@ class LeagueDivision extends Component<Props, State> {
         simulatedMatches: [],
     }
     
-    getPlayer = (idPlayer: number): DivisionPlayer => {
-        const idx = this.props.division.players.findIndex(player => player.id === idPlayer); 
+    getPlayer = (idLeagueDivisionPlayer: number): DivisionPlayer => {
+        const idx = this.props.division.players.findIndex(player => player.idLeagueDivisionPlayer === idLeagueDivisionPlayer); 
         return this.props.division.players[idx];
     }
     
