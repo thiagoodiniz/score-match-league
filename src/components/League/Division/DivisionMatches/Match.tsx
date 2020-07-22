@@ -8,14 +8,19 @@ interface Props {
     player1: DivisionPlayer;
     player2: DivisionPlayer;
     match: DivisionMatch;
+    isSimulation: boolean;
 }
 
-const Match: React.FC<Props> = ({ player1, player2, match }) => {
+const Match: React.FC<Props> = ({ player1, player2, match, isSimulation }) => {
     const dispatch = useDispatch();
     const [scoredGoalsPlayer1, setScoredGoalsPlayer1] = useState(match.scored_goals_player1 || '');
     const [scoredGoalsPlayer2, setScoredGoalsPlayer2] = useState(match.scored_goals_player2 || '');
 
     const canShowUpdateBtn = (): boolean => {
+        if(isSimulation){
+            return false;
+        }
+
         let p1Goals = scoredGoalsPlayer1 === '' ? null : Number(scoredGoalsPlayer1);
         let p2Goals = scoredGoalsPlayer2 === '' ? null : Number(scoredGoalsPlayer2);
 
@@ -38,8 +43,8 @@ const Match: React.FC<Props> = ({ player1, player2, match }) => {
                 </span>
             </MatchPlayer1>
             <MatchScoreboard>
-                <MatchInputGoals value={ scoredGoalsPlayer1 } type="number" onChange={ (e) => setScoredGoalsPlayer1(e.target.value) } />
-                <MatchInputGoals value={ scoredGoalsPlayer2 } type="number" onChange={ (e) => setScoredGoalsPlayer2(e.target.value) } />
+                <MatchInputGoals disabled={ isSimulation } value={ scoredGoalsPlayer1 } type="number" onChange={ (e) => setScoredGoalsPlayer1(e.target.value) } />
+                <MatchInputGoals disabled={ isSimulation } value={ scoredGoalsPlayer2 } type="number" onChange={ (e) => setScoredGoalsPlayer2(e.target.value) } />
                 { canShowUpdateBtn() && 
                     <SaveMatchBtn onClick={ onClickSaveMatch }>
                         Salvar

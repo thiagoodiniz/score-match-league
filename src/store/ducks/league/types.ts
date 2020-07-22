@@ -29,18 +29,19 @@ export interface Division {
     divisionDesc: string;
     players: DivisionPlayer[];
     divisionMatches: DivisionMatch[];
+    numberOfPlayers: number;
 }
 
 export interface DivisionMatch {
-    id: number;
+    id?: number;
     leagueDivisionId: number;
     round: number;
     idPlayer1: number,
     idPlayer2: number,
-    last_update_date: Date,
+    last_update_date?: Date,
     scored_goals_player1?: any,
     scored_goals_player2?: any,
-    status: number
+    status?: number
 }
 
 export interface DivisionPlayer extends Player {
