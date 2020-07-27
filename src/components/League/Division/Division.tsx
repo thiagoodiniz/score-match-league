@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import DivisionTable from './DivisionTable';
+import DivisionTable from './DivisionTable/DivisionTable';
 import DivisionMatches from './DivisionMatches/DivisionMatches';
-import { Division, DivisionPlayer, DivisionMatch } from '../../../store/ducks/league/types';
-import { LeagueDivisionCard } from './styles';
-import AddDivisionPlayers from './addPlayers';
+import { Division as DivisionType, DivisionPlayer, DivisionMatch } from '../../../store/ducks/league/types';
+import { LeagueDivisionCard } from './DivisionStyles';
+import CreateDivisionPlayers from './CreateDivisionPlayers/CreateDivisionPlayers';
 import { Player } from '../../../store/ducks/players/types';
 import { Button } from '@material-ui/core';
 
@@ -21,7 +21,7 @@ interface SimulatedMatch {
     idLeagueDivisionPlayer2: number;
 }
 interface Props {
-    division: Division;
+    division: DivisionType;
     players: Player[]; // @TODO: Mudar para allPlayers
     addDivisionPlayers(playerIds: number[] ): void;
 }
@@ -31,7 +31,7 @@ interface State {
     simulatedMatches: SimulatedMatch[];
 }
 
-class LeagueDivision extends Component<Props, State> {
+class Division extends Component<Props, State> {
 
     state = {
         sortingMatches: false,
@@ -194,7 +194,7 @@ class LeagueDivision extends Component<Props, State> {
                             </>
                         : 
                             <>
-                                <AddDivisionPlayers players={ players }  
+                                <CreateDivisionPlayers players={ players }  
                                                     addDivisionPlayers={ (playerIds: number[]) => this.props.addDivisionPlayers( playerIds ) } />
 
                             </>
@@ -207,4 +207,4 @@ class LeagueDivision extends Component<Props, State> {
 
 }
 
-export default LeagueDivision;
+export default Division;

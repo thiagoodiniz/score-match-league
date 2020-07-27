@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DivisionMatch, DivisionPlayer } from '../../../../store/ducks/league/types';
-import { DivisionMatchesContainer, RoundController } from '../styles';
-import Match from './Match';
+import { DivisionMatchesContainer, RoundController } from './DivisionMatchesStyles';
+import Match from './Match/Match';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 

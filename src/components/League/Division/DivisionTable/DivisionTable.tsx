@@ -1,5 +1,5 @@
 import React from 'react';
-import { DivisionPlayer } from '../../../store/ducks/league/types';
+import { DivisionPlayer } from '../../../../store/ducks/league/types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';

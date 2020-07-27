@@ -1,39 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 
-export const LeagueDivisionCard = styled.div`
-    && {
-        width: 1240px;
-        display: flex;
-        margin-bottom: 25px;
-    }
-`;
-
-export const RoundController = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    button {
-        display: flex;
-        align-items: center;
-        background: none;
-        outline: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    button.hide {
-        opacity: 0;
-        cursor: unset;
-    }
-`;
-
-export const DivisionMatchesContainer = styled.div`
-    width: 40%;
-    margin-left: 5%;
-`;
-
 export const MatchContainer = styled.div`
     display: flex;
     border-bottom: 1px solid #f5f5f5;

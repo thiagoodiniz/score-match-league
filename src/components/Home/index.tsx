@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './styles';
-import League from '../League';
+import League from '../League/League';
 
 const Home = () => {
     return(

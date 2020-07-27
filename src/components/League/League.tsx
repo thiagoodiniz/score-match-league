@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import LeagueDivision from './Division';
+import Division from './Division/Division';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as LeagueActions from '../../store/ducks/league/actions';
 import * as PlayerActions from '../../store/ducks/players/actions';
-import { LeagueState, Division } from '../../store/ducks/league/types';
+import { LeagueState, Division as DivisionType } from '../../store/ducks/league/types';
 import { Player } from '../../store/ducks/players/types';
 
 interface Props {
@@ -23,7 +23,7 @@ class League extends Component<Props> {
         this.props.loadPlayers();
     }
 
-    addDivisionPlayers = (leagueId: number, playerIds: number[], division: Division) => {
+    addDivisionPlayers = (leagueId: number, playerIds: number[], division: DivisionType) => {
         this.props.addDivisionPlayers(leagueId, division.leagueDivisionId, playerIds );
     }
 
@@ -34,7 +34,7 @@ class League extends Component<Props> {
             <div>
                 <h1>{ league?.name }</h1>
                 { league?.divisions.map((division, idx) => 
-                    <LeagueDivision key={idx} players={ players } division={ division } addDivisionPlayers={ (playerIds: number[]) => this.addDivisionPlayers(league.id, playerIds, division) } />
+                    <Division key={idx} players={ players } division={ division } addDivisionPlayers={ (playerIds: number[]) => this.addDivisionPlayers(league.id, playerIds, division) } />
                 ) }
             </div>
         );

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
-import { DivisionPlayer, DivisionMatch } from '../../../../store/ducks/league/types';
-import { MatchInputGoals, MatchContainer, MatchPlayer1, MatchPlayer2, MatchScoreboard, SaveMatchBtn } from '../styles';
-import { saveMatch } from '../../../../store/ducks/league/actions';
+import { DivisionPlayer, DivisionMatch } from '../../../../../store/ducks/league/types';
+import { MatchInputGoals, MatchContainer, MatchPlayer1, MatchPlayer2, MatchScoreboard, SaveMatchBtn } from './MatchStyles';
+import { saveMatch } from '../../../../../store/ducks/league/actions';
 
 interface Props {
     player1: DivisionPlayer;
