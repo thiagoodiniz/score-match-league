@@ -182,10 +182,12 @@ class LeagueDivision extends Component<Props, State> {
                                 { division.divisionMatches.length > 0
                                     ?
                                         <DivisionMatches divisionMatches={ division.divisionMatches } 
-                                                         getPlayer={ (idPlayer: number) => this.getPlayer(idPlayer) } />
+                                                         getPlayer={ (idPlayer: number) => this.getPlayer(idPlayer) }
+                                                         numberOfRounds={ division.numberOfPlayers - 1 } />
                                     : this.state.sortingMatches 
                                         ? <DivisionMatches divisionMatches={ this.getSortedDivisionMatches() } 
                                             getPlayer={ (idPlayer: number) => this.getPlayer(idPlayer) } 
+                                            numberOfRounds={ division.numberOfPlayers - 1 }
                                             isSimulation={ true } />
                                         : <Button onClick={ () => this.createDivisionMatches() }>Sortear partidas</Button>
                                 }
